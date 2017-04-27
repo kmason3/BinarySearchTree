@@ -65,6 +65,7 @@ public class BST {
 
 			} else {
 				p.setLeft(newNode);
+				newNode.setParent(p);
 			}
 
 		}
@@ -79,10 +80,11 @@ public class BST {
 
 			} else {
 				p.setRight(newNode);
+				newNode.setParent(p);
 			}
 
 		}
-		// If the string matches the parent then the frequency is incrimented
+		// If the string matches the parent then the frequency is incremented
 		else if (p.getData().equalsIgnoreCase(data)) {
 
 			p.incFreq();

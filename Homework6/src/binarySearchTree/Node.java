@@ -1,18 +1,19 @@
 package binarySearchTree;
 
 public class Node {
-	
-	private Node left, right;
+
+	private Node left, right, parent;
 	private String data;
 	private int freq;
-	
-	public Node(String word){
-		
+
+	public Node(String word) {
+
 		this.setData(word);
 		this.setFreq(1);
 		this.setLeft(null);
 		this.setRight(null);
-		
+		this.setParent(null);
+
 	}
 
 	public Node getLeft() {
@@ -28,7 +29,15 @@ public class Node {
 	}
 
 	public void setRight(Node right) {
-		this.right =  right;
+		this.right = right;
+	}
+
+	public Node getParent() {
+		return parent;
+	}
+
+	public void setParent(Node parent) {
+		this.parent = parent;
 	}
 
 	public String getData() {
@@ -46,10 +55,11 @@ public class Node {
 	public void setFreq(int freq) {
 		this.freq = freq;
 	}
-	
-	public void incFreq(){
+
+	public void incFreq() {
 		this.freq++;
 	}
+
 	
 
 }
