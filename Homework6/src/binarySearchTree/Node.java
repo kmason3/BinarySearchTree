@@ -6,7 +6,7 @@ public class Node {
 	private String data;
 	private int freq;
 	
-	public Node(String word, int count){
+	public Node(String word){
 		
 		this.setData(word);
 		this.setFreq(1);
@@ -45,6 +45,10 @@ public class Node {
 
 	public void setFreq(int freq) {
 		this.freq = freq;
+	}
+	
+	public void incFreq(){
+		this.freq++;
 	}
 	
 
