@@ -129,60 +129,32 @@ public class BST {
 
 	public void find(String find) {
 
+		Node result = search(find);
+
 		if (isEmpty()) {
 			System.out.println("Tree is Empty!");
-		} else {
-			find(root, find);
-		}
-
-	}
-
-	public void find(Node curr, String find) {
-
-		if (curr.getData().equals(find)) {
+		} else if (result != null) {
 			System.out.println(find + " is in tree!");
-
-		}
-
-		if (curr.getData().compareToIgnoreCase(find) > 0) {
-
-			if (curr.getLeft() != null) {
-				find(curr.getLeft(), find);
-			} else {
-				System.out.println("Item " + find + " not found!");
-			}
-
-		}
-
-		if (curr.getData().compareToIgnoreCase(find) < 0) {
-			if (curr.getRight() != null) {
-
-				find(curr.getRight(), find);
-
-			} else {
-				System.out.println("Item " + find + " not found!");
-			}
-
+		} else if (result == null) {
+			System.out.println(find + " is not in tree!");
 		}
 
 	}
-	
-	public Node search(String find){
+
+	public Node search(String find) {
 		Node current = root;
-		if(isEmpty())
+		if (isEmpty())
 			return null;
-		while(current != null){
-			if(current.getData().equals(find)){
+		while (current != null) {
+			if (current.getData().equals(find)) {
 				return current;
-			}
-			else if(current.getData().compareToIgnoreCase(find)>0){
+			} else if (current.getData().compareToIgnoreCase(find) > 0) {
 				current = current.getLeft();
-			}else{
+			} else {
 				current = current.getRight();
 			}
 		}
 		return null;
 	}
-	
 
 }

@@ -17,6 +17,7 @@ public class Main {
 		
 		
 		test.find("f");
+		test.find("b");
 		test.inOrder();
 		
 		System.out.println(test.search("f"));
