@@ -16,6 +16,8 @@ public class Main {
 		System.out.println(test.getRoot().getRight().getData());
 		System.out.println(test.getRoot().getRight().getFreq());
 		
+		test.inOrder();
+		
 	}
 
 }
