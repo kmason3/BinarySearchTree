@@ -9,7 +9,7 @@ public class BST {
 	}
 	
 	public boolean isEmpty(){
-		return root == null;
+		return this.root == null;
 	}
 
 	public Node getRoot() {
@@ -23,44 +23,46 @@ public class BST {
 	}
 	
 	public void insert(String key){
-		
+
+		if(isEmpty()){
+			
+			setRoot(key);
+			
+		}else{
 		insert(root, key);
+		}
 		
 	}
 	
 	public void insert(Node p, String data){
 		
-		if(isEmpty()){
-			
-			setRoot(data);
-			
-		}
+		Node newNode = new Node(data);
 		
-		if(p.getData().compareToIgnoreCase(data) < 0){
+		 if(p.getData().compareToIgnoreCase(data) > 0){
 			
 			if(p.getLeft() != null){
 				
 				insert(p.getLeft(), data);
 				
 			}else{
-				p.setLeft(data);
+				p.setLeft(newNode);
 			}
 			
 		}
 		
-		if(p.getData().compareToIgnoreCase(data) > 0){
+		else if(p.getData().compareToIgnoreCase(data) < 0){
 			
 			if(p.getRight() != null){
 				
 				insert(p.getRight(), data);
 				
 			}else{
-				p.setRight(data);
+				p.setRight(newNode);
 			}
 			
 		}
 		
-		if(p.getData().equalsIgnoreCase(data)){
+		else if(p.getData().equalsIgnoreCase(data)){
 			
 			p.incFreq();
 			

@@ -19,16 +19,16 @@ public class Node {
 		return left;
 	}
 
-	public void setLeft(String left) {
-		this.left = new Node(left);
+	public void setLeft(Node left) {
+		this.left = left;
 	}
 
 	public Node getRight() {
 		return right;
 	}
 
-	public void setRight(String right) {
-		this.right = new Node(right);
+	public void setRight(Node right) {
+		this.right =  right;
 	}
 
 	public String getData() {
