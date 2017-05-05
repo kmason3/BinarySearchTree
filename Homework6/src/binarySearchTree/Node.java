@@ -59,6 +59,18 @@ public class Node {
 	public void incFreq() {
 		this.freq++;
 	}
+	
+	public boolean hasLeft(){
+		return this.getLeft() != null;
+		
+	}
+	
+	public boolean hasRight(){
+		return this.getRight() != null;
+	}
+	public boolean noChildren(){
+		return this.getRight() == null && this.getLeft() == null;
+	}
 
 	
 

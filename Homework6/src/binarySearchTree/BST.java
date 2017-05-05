@@ -159,4 +159,48 @@ public class BST {
 		return null;
 	}
 
+	public void delete(String toDelete) {
+		// toDo!!!
+
+		Node temp = search(toDelete);
+
+		if (isEmpty()) {
+			System.out.println("Tree is empty!");
+		}
+
+		if (temp.noChildren()) {
+			if (temp.getParent().getLeft().equals(temp)) {
+
+				temp.getParent().setLeft(null);
+				temp = null;
+			} else {
+				temp.getParent().setRight(null);
+				temp = null;
+			}
+
+		}
+		else if(temp.hasLeft() && !temp.hasRight()){
+			
+			temp.getParent().setLeft(temp.getLeft());
+			temp = null;			
+		}
+		else if(!temp.hasLeft() && temp.hasRight()){
+			temp.getParent().setRight(temp.getRight());
+			temp = null;
+		}else{
+			Node min = minimum(temp.getRight());
+			temp.setData(min.getData());
+			min.getParent().setLeft(null);
+			min = null;
+		}
+	}
+	
+	public Node minimum(Node root){
+		if(root.getLeft() == null)
+			return root;
+		else{
+			return minimum(root.getLeft());
+		}
+	}
+
 }

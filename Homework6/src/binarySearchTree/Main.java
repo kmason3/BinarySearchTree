@@ -20,7 +20,7 @@ public class Main {
 		test.find("b");
 		test.inOrder();
 		
-		System.out.println(test.search("f"));
+		System.out.println(test.search("c").getParent());
 		
 	}
 
