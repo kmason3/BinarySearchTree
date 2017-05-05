@@ -17,10 +17,11 @@ public class Main {
 		
 		
 		test.find("f");
-		test.find("b");
+		
+		test.delete("b");
 		test.inOrder();
 		
-		System.out.println(test.search("c").getParent());
+		
 		
 	}
 
