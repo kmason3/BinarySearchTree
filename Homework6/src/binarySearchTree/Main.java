@@ -7,18 +7,22 @@ public class Main {
 		BST test = new BST();
 		String testA = "a", testB = "b", testB1 = "b", c = "c", d = "d";
 		
-		test.insert(c);
+		test.insert(d);
 		test.insert(testA);
 		test.insert(testB);
 		test.insert(testB1);
 		test.insert(c);
 		test.insert(d);
+		test.insert("f");
+//		test.insert("g");
+		test.insert("e");
 		
 		
 		
-		test.find("f");
+//		test.find("f");
 		
-		test.delete("b");
+		test.delete("a");
+		test.delete("f");
 		test.inOrder();
 		
 		

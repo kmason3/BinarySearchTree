@@ -166,11 +166,10 @@ public class BST {
 
 		if (isEmpty())
 			return null;
-		
 
 		else if (temp.noChildren()) {
 			System.out.println("Check NC");
-			if (temp.getParent().getData().compareToIgnoreCase(toDelete) >0) {
+			if (temp.getParent().getData().compareToIgnoreCase(toDelete) > 0) {
 
 				temp.getParent().setLeft(null);
 				temp = null;
@@ -179,29 +178,40 @@ public class BST {
 				temp = null;
 			}
 
-		}
-		else if(temp.hasLeft() && !temp.hasRight()){
-			
-			System.out.println("Check OP");
-			
-			temp.getParent().setLeft(temp.getLeft());
-			temp = null;			
-		}
-		else if(!temp.hasLeft() && temp.hasRight()){
-			temp.getParent().setRight(temp.getRight());
-			temp = null;
-		}else{
+		} else if (temp.hasLeft() && !temp.hasRight()) {
+
+			if (temp.getData().compareToIgnoreCase(temp.getParent().getData()) < 0) {
+				temp.getParent().setLeft(temp.getRight());
+				temp = null;
+			} else {
+				temp.getParent().setRight(temp.getLeft());
+				temp = null;
+
+			}
+		} else if (!temp.hasLeft() && temp.hasRight()) {
+
+			if (temp.getData().compareToIgnoreCase(temp.getParent().getData()) < 0) {
+				temp.getParent().setLeft(temp.getRight());
+				temp = null;
+			} else {
+				temp.getParent().setRight(temp.getLeft());
+				temp = null;
+
+			}
+		} else {
+			// System.out.println("CHECK");
 			Node min = minimum(temp.getRight());
 			temp.setData(min.getData());
 			min.getParent().setLeft(null);
 			min = null;
-		}return (temp);
+		}
+		return (temp);
 	}
-	
-	public Node minimum(Node root){
-		if(root.getLeft() == null)
+
+	public Node minimum(Node root) {
+		if (root.getLeft() == null)
 			return root;
-		else{
+		else {
 			return minimum(root.getLeft());
 		}
 	}
