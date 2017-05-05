@@ -200,10 +200,18 @@ public class BST {
 			}
 		} else {
 			// System.out.println("CHECK");
-			Node min = minimum(temp.getRight());
+			Node min;
+			if(temp.getRight().getRight() == null){
+			min = minimum(temp);
 			temp.setData(min.getData());
 			min.getParent().setLeft(null);
-			min = null;
+			min = null;}
+			else{
+				min = minimum(temp.getRight());
+				
+			temp.setData(min.getData());
+			min.getParent().setLeft(null);
+			min = null;}
 		}
 		return (temp);
 	}

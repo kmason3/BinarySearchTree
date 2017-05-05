@@ -14,14 +14,14 @@ public class Main {
 		test.insert(c);
 		test.insert(d);
 		test.insert("f");
-//		test.insert("g");
+		test.insert("g");
 		test.insert("e");
 		
 		
 		
 //		test.find("f");
 		
-		test.delete("a");
+//		test.delete("a");
 		test.delete("f");
 		test.inOrder();
 		
