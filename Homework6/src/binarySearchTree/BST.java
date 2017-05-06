@@ -54,9 +54,11 @@ public class BST {
 	public void insert(Node p, String data) {
 		// Creates new node with input data
 		Node newNode = new Node(data);
-		// If the string comes before the parent it's placed to the left if left
-		// node is free, if left node is full recursively calls insert with left
-		// node as parent
+		/*
+		 * If the string comes before the parent it's placed to the left if left
+		 * node is free, if left node is full recursively calls insert with left
+		 * node as parent
+		 */
 		if (p.getData().compareToIgnoreCase(data) > 0) {
 
 			if (p.getLeft() != null) {
@@ -69,9 +71,11 @@ public class BST {
 			}
 
 		}
-		// If the string comes after the parent it's placed to the right if the
-		// right node is free, if right node is full recursively calls insert
-		// with right node as parent
+		/*
+		 * If the string comes after the parent it's placed to the right if the
+		 * right node is free, if right node is full recursively calls insert
+		 * with right node as parent
+		 */
 		else if (p.getData().compareToIgnoreCase(data) < 0) {
 
 			if (p.getRight() != null) {
@@ -129,10 +133,20 @@ public class BST {
 
 	}
 
+	/**
+	 * Determines if string is in BST and prints human readable response
+	 * 
+	 * @param String
+	 *            find
+	 */
 	public void find(String find) {
-
+		// Implements search method to create a node variable
 		Node result = search(find);
-
+		/*
+		 * If the BST is empty prints Tree is Empty!, if the string is in the
+		 * BST prints the string and is in tree!, if the node is null then the
+		 * string is not in BST so it prints the string and is not in tree!
+		 */
 		if (isEmpty()) {
 			System.out.println("Tree is Empty!");
 		} else if (result != null) {
@@ -143,7 +157,18 @@ public class BST {
 
 	}
 
+	/**
+	 * If the the string is in the BST it returns the node that contains it
+	 * 
+	 * @param String
+	 *            find
+	 * @return Node
+	 */
 	public Node search(String find) {
+		/*
+		 * Loops through BST to find a node with string 'find'. If node exists
+		 * returns Node, if node does not exist returns null.
+		 */
 		Node current = root;
 		if (isEmpty())
 			return null;
@@ -159,14 +184,28 @@ public class BST {
 		return null;
 	}
 
+	/**
+	 * Deletes node containing the parameter toDelete
+	 * 
+	 * @param String
+	 *            toDelete
+	 * @return Node
+	 */
 	public Node delete(String toDelete) {
-		// toDo!!!
-
+		// Creates Node variable using search method
 		Node temp = search(toDelete);
-
+		// If BST is empty returns null
 		if (isEmpty())
 			return null;
-
+		/*
+		 * If the node to be deleted has no children and it's the left child of
+		 * the parent sets parent's left child to null and deletes node. If it's
+		 * the right child sets parents right child to null and deletes node. If
+		 * the node to be deleted has only one child points the parent to the
+		 * next node in tree and deletes node. If the node to be deleted has two
+		 * children method finds the minimum node to the right of it and
+		 * replaces it's data with that data then deletes the minimum node.
+		 */
 		if (temp.noChildren()) {
 
 			if (temp.getParent().getData().compareToIgnoreCase(toDelete) > 0) {
@@ -203,7 +242,7 @@ public class BST {
 
 			}
 		} else {
-			
+
 			Node min;
 			if (temp.getRight().getRight() == null) {
 				min = minimum(temp);
@@ -222,15 +261,34 @@ public class BST {
 		}
 		return (temp);
 	}
-	
-	public void deleteInst(String toDelete){
+
+	/**
+	 * Delete's instance of a string
+	 * 
+	 * @param String
+	 *            toDelete
+	 */
+	public void deleteInst(String toDelete) {
+		/*
+		 * Creates temporary node from string input and if there are multiple
+		 * occurences in the text only deletes one from the tree. If there is
+		 * only one occurance then calls delete method and removes node.
+		 */
 		Node temp = search(toDelete);
-		if(temp.getFreq() > 1){
+		if (temp.getFreq() > 1) {
 			temp.decFreq();
-		}else{
+		} else {
 			delete(temp.getData());
 		}
 	}
+
+	/**
+	 * Find's minimum node
+	 * 
+	 * @param Node
+	 *            root
+	 * @return Node minimum
+	 */
 
 	public Node minimum(Node root) {
 		if (root.getLeft() == null)
