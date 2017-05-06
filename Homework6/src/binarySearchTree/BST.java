@@ -168,9 +168,9 @@ public class BST {
 			return null;
 
 		if (temp.noChildren()) {
-			
+
 			System.out.println("No Children");
-			
+
 			if (temp.getParent().getData().compareToIgnoreCase(toDelete) > 0) {
 
 				temp.getParent().setLeft(null);
@@ -181,43 +181,47 @@ public class BST {
 			}
 
 		} else if (temp.hasLeft() && !temp.hasRight()) {
-
+			System.out.println("Has left child");
 			if (temp.getData().compareToIgnoreCase(temp.getParent().getData()) < 0) {
-				temp.getParent().setLeft(temp.getRight());
+				temp.getParent().setLeft(temp.getLeft());
 				temp = null;
 			} else {
+				System.out.println("am I getting here");
 				temp.getParent().setRight(temp.getLeft());
 				temp = null;
 
 			}
 		} else if (!temp.hasLeft() && temp.hasRight()) {
-System.out.println("Right Child");
+			System.out.println("Right Child");
 			if (temp.getData().compareToIgnoreCase(temp.getParent().getData()) < 0) {
 				System.out.println("am I getting here");
 				temp.getParent().setLeft(temp.getRight());
 				temp = null;
 			} else {
 				System.out.println("right child larger than parent");
-				System.out.println("temp's parent is " + temp.getParent().getData());
-//				System.out.println("temp's left is " + temp.getLeft().getData());
+				System.out.println("temp's parent is "
+						+ temp.getParent().getData());
+				// System.out.println("temp's left is " +
+				// temp.getLeft().getData());
 				temp.getParent().setRight(temp.getRight());
 				temp = null;
 
 			}
 		} else {
-			 System.out.println("CHECK");
+			System.out.println("CHECK");
 			Node min;
-			if(temp.getRight().getRight() == null){
-			min = minimum(temp);
-			temp.setData(min.getData());
-			min.getParent().setLeft(null);
-			min = null;}
-			else{
+			if (temp.getRight().getRight() == null) {
+				min = minimum(temp);
+				temp.setData(min.getData());
+				min.getParent().setLeft(null);
+				min = null;
+			} else {
 				min = minimum(temp.getRight());
-				
-			temp.setData(min.getData());
-			min.getParent().setLeft(null);
-			min = null;}
+
+				temp.setData(min.getData());
+				min.getParent().setLeft(null);
+				min = null;
+			}
 		}
 		return (temp);
 	}

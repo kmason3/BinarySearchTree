@@ -11,7 +11,7 @@ public class Main {
 		
 		test.insert(testB);
 		test.insert(testA);
-		test.insert(c);
+//		test.insert(c);
 		test.insert("f");
 		test.insert("g");
 		test.insert("e");
@@ -20,15 +20,14 @@ public class Main {
 	
 //		test.deleteInstance("b");
 //		test.deleteInstance("b");
-		test.delete("d");
-		test.delete("h");
-		
+//		test.delete("d");
+//		test.delete("h");
 		test.delete("b");
-		test.delete("a");
-		test.delete("f");
-		System.out.println("Root is " + test.getRoot().getData());
-		System.out.println("Root's left child " + test.getRoot().getLeft().getData());
-		System.out.println("Root's right child " + test.getRoot().getRight().getData());
+//		test.delete("a");
+//		test.delete("f");
+//		System.out.println("Root is " + test.getRoot().getData());
+//		System.out.println("Root's left child " + test.getRoot().getLeft().getData());
+//		System.out.println("Root's right child " + test.getRoot().getRight().getData());
 //		System.out.println("b's left child is " + test.search("b").getLeft().getData());
 //		System.out.println("a's right child is " + test.search("a").getRight().getData());
 //		System.out.println("f's left child is " + test.search("f").getLeft().getData());
@@ -36,8 +35,7 @@ public class Main {
 //		System.out.println("g's left child is " + test.search("g").getLeft().getData());
 //		System.out.println("g's right child is " + test.search("g").getRight().getData());
 		test.inOrder();
-//		test.find("f");
-		
+
 		
 		
 	}
