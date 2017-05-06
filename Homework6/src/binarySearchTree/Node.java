@@ -59,6 +59,9 @@ public class Node {
 	public void incFreq() {
 		this.freq++;
 	}
+	public void decFreq(){
+		this.freq--;
+	}
 	
 	public boolean hasLeft(){
 		return this.getLeft() != null;

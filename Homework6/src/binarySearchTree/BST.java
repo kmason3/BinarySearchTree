@@ -167,8 +167,10 @@ public class BST {
 		if (isEmpty())
 			return null;
 
-		else if (temp.noChildren()) {
-			System.out.println("Check NC");
+		if (temp.noChildren()) {
+			
+			System.out.println("No Children");
+			
 			if (temp.getParent().getData().compareToIgnoreCase(toDelete) > 0) {
 
 				temp.getParent().setLeft(null);
@@ -189,17 +191,21 @@ public class BST {
 
 			}
 		} else if (!temp.hasLeft() && temp.hasRight()) {
-
+System.out.println("Right Child");
 			if (temp.getData().compareToIgnoreCase(temp.getParent().getData()) < 0) {
+				System.out.println("am I getting here");
 				temp.getParent().setLeft(temp.getRight());
 				temp = null;
 			} else {
-				temp.getParent().setRight(temp.getLeft());
+				System.out.println("right child larger than parent");
+				System.out.println("temp's parent is " + temp.getParent().getData());
+//				System.out.println("temp's left is " + temp.getLeft().getData());
+				temp.getParent().setRight(temp.getRight());
 				temp = null;
 
 			}
 		} else {
-			// System.out.println("CHECK");
+			 System.out.println("CHECK");
 			Node min;
 			if(temp.getRight().getRight() == null){
 			min = minimum(temp);
