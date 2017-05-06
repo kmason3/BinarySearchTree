@@ -11,18 +11,18 @@ public class Main {
 		
 		test.insert(testB);
 		test.insert(testA);
-//		test.insert(c);
+		test.insert("b");
+		test.insert(c);
 		test.insert("f");
 		test.insert("g");
 		test.insert("e");
 		test.insert(h);
 		
 	
-//		test.deleteInstance("b");
-//		test.deleteInstance("b");
-//		test.delete("d");
+//		test.deleteInst("b");
+//		test.deleteInst("d");
 //		test.delete("h");
-		test.delete("b");
+//		test.delete("b");
 //		test.delete("a");
 //		test.delete("f");
 //		System.out.println("Root is " + test.getRoot().getData());
