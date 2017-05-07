@@ -56,8 +56,7 @@ public class Main {
 		
 
 		} catch (Exception e) {
-			System.err.format("Exception occurred trying to read '%s'.",
-					filename);
+			System.err.format("Exception occurred trying to read file ",filename);
 			e.printStackTrace();
 		}
 
