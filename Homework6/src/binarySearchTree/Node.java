@@ -6,6 +6,11 @@ public class Node {
 	private String data;
 	private int freq;
 
+	/**
+	 * Node constructor
+	 * 
+	 * @param String
+	 */
 	public Node(String word) {
 
 		this.setData(word);
@@ -16,6 +21,7 @@ public class Node {
 
 	}
 
+	// Getters and Setters
 	public Node getLeft() {
 		return left;
 	}
@@ -56,25 +62,27 @@ public class Node {
 		this.freq = freq;
 	}
 
+	// Increase and decreases frequencies.
 	public void incFreq() {
 		this.freq++;
 	}
-	public void decFreq(){
+
+	public void decFreq() {
 		this.freq--;
 	}
-	
-	public boolean hasLeft(){
+
+	//Methods that tell if nodes have a left, a right, or any children.
+	public boolean hasLeft() {
 		return this.getLeft() != null;
-		
-	}
-	
-	public boolean hasRight(){
-		return this.getRight() != null;
-	}
-	public boolean noChildren(){
-		return this.getRight() == null && this.getLeft() == null;
+
 	}
 
-	
+	public boolean hasRight() {
+		return this.getRight() != null;
+	}
+
+	public boolean noChildren() {
+		return this.getRight() == null && this.getLeft() == null;
+	}
 
 }
