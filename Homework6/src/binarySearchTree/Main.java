@@ -17,19 +17,44 @@ public class Main {
 			for (int i = 0; i < key.length; i++) {
 				test.insert(key[i]);
 
-			}
-			System.out.println("The Root is " + test.getRoot().getData());
+			}reader.close();
+			
+			//Balance Testing
+			System.out.println("--Balance Test--");
+			System.out.println();
+			System.out.println("The Unbalanced Root is " + test.getRoot().getData());
+			System.out.println();
 			test.inOrder();
-//			System.out.println("--Delete 'am' Test:");
-//			test.delete("am");
-//			test.inOrder();
-//			System.out.println("--Delete Instance of 'testing' Test:");
-//			test.deleteInst("testing");
-//			reader.close();
-//			test.inOrder();
+			System.out.println();
 			test.balance();
+			System.out.println("The Balanced Root is " + test.getRoot().getData());
+			System.out.println();
+			
+			//Delete Testing
+			System.out.println("--Delete 'am' Test--");
+			System.out.println();
+			test.delete("am");
 			test.inOrder();
-			System.out.println("The Root is " + test.getRoot().getData());
+			System.out.println();
+			
+			//Delete Instance Testing
+			System.out.println("--Delete Instance of 'testing' Test--");
+			System.out.println();
+			test.deleteInst("testing");
+			test.inOrder();
+			System.out.println();
+			
+			//Find Testing
+			System.out.println("--Find 'a' Testing--");
+			System.out.println();
+			test.find("a");
+			System.out.println();
+			System.out.println("--Find 'zootopia' Testing--");
+			System.out.println();
+			test.find("zootopia");
+			
+		
+
 		} catch (Exception e) {
 			System.err.format("Exception occurred trying to read '%s'.",
 					filename);
