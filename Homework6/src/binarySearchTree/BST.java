@@ -1,8 +1,11 @@
 package binarySearchTree;
 
+import java.util.ArrayList;
+
 public class BST {
 
 	private Node root;
+	ArrayList<Node> tree = new ArrayList<Node>();
 
 	public BST() {
 		root = null;
@@ -31,7 +34,7 @@ public class BST {
 	/**
 	 * Insert method adds string to tree
 	 * 
-	 * @param key
+	 * @param String
 	 */
 	public void insert(String key) {
 		// If tree is empty make root otherwise recursively call insert
@@ -48,8 +51,8 @@ public class BST {
 	/**
 	 * Inserts new node at correct position in tree
 	 * 
-	 * @param p
-	 * @param data
+	 * @param Node
+	 * @param String
 	 */
 	public void insert(Node p, String data) {
 		// Creates new node with input data
@@ -97,6 +100,12 @@ public class BST {
 
 	}
 
+	public void insertNode(Node toInsert) {
+		String data = toInsert.getData();
+
+		insert(data);
+	}
+
 	/**
 	 * Prints tree in order
 	 */
@@ -121,6 +130,10 @@ public class BST {
 			}
 			// If left node is null print current node's data
 			System.out.println(curr.getData() + " " + curr.getFreq());
+			for (int i = 1; i <= curr.getFreq(); i++) {
+				tree.add(curr);
+			}
+
 			// If current node has a right child recursively call inOrder method
 			// starting at right node
 			if (curr.getRight() != null) {
@@ -137,7 +150,7 @@ public class BST {
 	 * Determines if string is in BST and prints human readable response
 	 * 
 	 * @param String
-	 *            find
+	 * 
 	 */
 	public void find(String find) {
 		// Implements search method to create a node variable
@@ -161,7 +174,7 @@ public class BST {
 	 * If the the string is in the BST it returns the node that contains it
 	 * 
 	 * @param String
-	 *            find
+	 * 
 	 * @return Node
 	 */
 	public Node search(String find) {
@@ -188,7 +201,7 @@ public class BST {
 	 * Deletes node containing the parameter toDelete
 	 * 
 	 * @param String
-	 *            toDelete
+	 * 
 	 * @return Node
 	 */
 	public Node delete(String toDelete) {
@@ -266,13 +279,13 @@ public class BST {
 	 * Delete's instance of a string
 	 * 
 	 * @param String
-	 *            toDelete
+	 * 
 	 */
 	public void deleteInst(String toDelete) {
 		/*
 		 * Creates temporary node from string input and if there are multiple
-		 * occurences in the text only deletes one from the tree. If there is
-		 * only one occurance then calls delete method and removes node.
+		 * occurrences in the text only deletes one from the tree. If there is
+		 * only one occurrence then calls delete method and removes node.
 		 */
 		Node temp = search(toDelete);
 		if (temp.getFreq() > 1) {
@@ -286,16 +299,58 @@ public class BST {
 	 * Find's minimum node
 	 * 
 	 * @param Node
-	 *            root
+	 * 
 	 * @return Node minimum
 	 */
 
 	public Node minimum(Node root) {
+		/*
+		 * If no smaller nodes return current node, if there is a smaller node
+		 * recursively call minimum.
+		 */
 		if (root.getLeft() == null)
 			return root;
 		else {
 			return minimum(root.getLeft());
 		}
+	}
+
+	/**
+	 * Balances tree by calculating mid point
+	 * 
+	 * @param Node
+	 * @param int
+	 * @param int
+	 */
+	public void balance(Node data[], int first, int last) {
+		// Calculates mid point of array storing data from BST
+		int mid = (first + last) / 2;
+		/*
+		 * If the first position in array is less than the last inserts the node
+		 * at the mid point then calls balance method recursively for the front
+		 * and back sublists.
+		 */
+		if (first <= last) {
+			insertNode(data[mid]);
+			balance(data, first, mid - 1);
+			balance(data, mid + 1, last);
+		}
+
+	}
+
+	/**
+	 * Balance Tree
+	 */
+	public void balance() {
+		/*
+		 * Takes tree array list and converts it to an array, resets BST to be
+		 * empty then calls balance with parameters of array, first and last.
+		 */
+		Node[] treeArray = tree.toArray(new Node[tree.size()]);
+		root = null;
+
+		balance(treeArray, 0, treeArray.length - 1);
+
 	}
 
 }
